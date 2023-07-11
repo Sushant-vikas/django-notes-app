@@ -2,6 +2,15 @@ pipeline {
     agent any
     
     stages {
+        
+        stage("Clean Workspace"){
+            steps{
+                script{
+                    cleanWs()
+                }
+            }
+        }
+        
         stage("Code") {
             steps {
                 echo "Cloning the code"
@@ -9,6 +18,8 @@ pipeline {
             }
             
         }
+        
+        
         stage("build") {
             steps {
                 echo "Building the image"
